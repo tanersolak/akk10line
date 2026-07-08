@@ -4,9 +4,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "James Henderson | Health & Safety Officer",
+  title: "Altan Kaan Kaskan | İş Sağlığı ve Güvenliği Uzmanı",
   description:
-    "The first disabled person to work as a Human Health & Safety Officer. Advocate, speaker, and role model.",
+    "İnsan Kaynakları İş Sağlığı ve Güvenliği Uzmanı olarak çalışan ilk engelli kişi. Savunucu, konuşmacı ve rol model.",
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="tr">
       <body className="min-h-screen bg-white antialiased font-sans">
         <Navbar />
         <main>{children}</main>
