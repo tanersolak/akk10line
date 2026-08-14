@@ -1,4 +1,17 @@
+import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
+
+export const metadata: Metadata = {
+  title: "Hikayem",
+  description:
+    "900 gram doğdu, 16 yıl tekerlekli sandalyede yaşadı, Prof. Dr. Ufuk Talu'nun ameliyatlarıyla ayağa kalktı ve Türkiye'nin ilk fiziksel engelli İSG Uzmanı oldu.",
+  alternates: { canonical: "/story" },
+  openGraph: {
+    title: "Hikayem | Altan Kaan Kaskan",
+    description: "Durmayı reddeden bir hayat — 900 gramdan Türkiye tarihine.",
+    url: "/story",
+  },
+};
 
 const TIMELINE = [
   {
@@ -42,10 +55,8 @@ export default function StoryPage() {
         subtitle="900 gram doğum. Bir tekerlekli sandalye. Üç ameliyat. Bir milli takım. Ve şimdi, Türkiye tarihinde bir ilk."
       />
 
-      {/* Timeline */}
       <div className="relative mt-16">
         <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-blue-100 -translate-x-1/2" />
-
         <div className="space-y-12">
           {TIMELINE.map((item, i) => (
             <div
@@ -54,12 +65,9 @@ export default function StoryPage() {
                 i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               }`}
             >
-              {/* Year bubble */}
               <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs text-center shadow-md z-10 px-1">
                 {item.year}
               </div>
-
-              {/* Content card */}
               <div
                 className={`ml-16 md:ml-0 md:w-1/2 bg-white border border-blue-100 rounded-2xl p-6 shadow-sm ${
                   i % 2 === 0 ? "md:ml-auto md:pr-16" : "md:mr-auto md:pl-16"
@@ -73,7 +81,6 @@ export default function StoryPage() {
         </div>
       </div>
 
-      {/* About quote */}
       <div className="mt-20 bg-blue-50 rounded-3xl p-10 text-center border border-blue-100">
         <p className="text-blue-800 text-lg leading-relaxed max-w-2xl mx-auto italic">
           &quot;Hayattaki amacım, fırsat verildiğinde engelli bireylerin neler başarabileceğini göstermek.&quot;

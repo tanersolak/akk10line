@@ -1,10 +1,21 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import NextImage from "next/image";
 import SectionHeading from "@/components/SectionHeading";
 
+export const metadata: Metadata = {
+  title: "Kariyer ve Eğitim Hayatım",
+  description:
+    "L'Oréal, English Home, Securitas Technology, Demirören Medya, Yemeksepeti ve Concentrix'teki kariyer yolculuğu. Anadolu Üniversitesi ve Namık Kemal Üniversitesi eğitim geçmişi.",
+  alternates: { canonical: "/career" },
+  openGraph: {
+    title: "Kariyer ve Eğitim Hayatım | Altan Kaan Kaskan",
+    description:
+      "Türkiye'nin ilk fiziksel engelli İSG Uzmanı'nın kariyer ve eğitim yolculuğu.",
+    url: "/career",
+  },
+};
 
-// Add your logo images to public/logos/
-// e.g. public/logos/loreal.png, public/logos/english-home.png etc.
 const EXPERIENCE = [
   {
     role: "Kalite, Çevre, Sağlık ve Güvenlik Uzmanı",
@@ -65,7 +76,7 @@ const EDUCATION = [
   },
 ];
 
-export default function AccomplishmentsPage() {
+export default function CareerPage() {
   return (
     <div className="pt-28 pb-20 px-6 max-w-5xl mx-auto">
       <SectionHeading
@@ -73,7 +84,6 @@ export default function AccomplishmentsPage() {
         title="Önemli kilometre taşları"
         subtitle="Bu yolculuğun her adımı; tekerlekli sandalyeden milli takıma, tarihi bir kariyer ilkine kadar kararlılığın neye benzediğinin kanıtıdır."
       />
-
 
       {/* Experience */}
       <div className="mt-20">
@@ -84,23 +94,13 @@ export default function AccomplishmentsPage() {
               key={job.role + job.company}
               className="flex items-center gap-5 bg-white border border-blue-100 rounded-2xl px-6 py-5 hover:border-blue-200 hover:shadow-sm transition-all"
             >
-              {/* Logo */}
               <div className="relative w-14 h-14 flex-shrink-0 rounded-xl overflow-hidden border border-blue-100 bg-blue-50">
-                <NextImage
-                  src={job.logo}
-                  alt={job.company}
-                  fill
-                  className="object-contain p-1.5"
-                />
+                <NextImage src={job.logo} alt={job.company} fill className="object-contain p-1.5" />
               </div>
-
-              {/* Text */}
               <div className="flex-1 min-w-0">
                 <p className="text-blue-900 font-bold text-sm">{job.role}</p>
                 <p className="text-blue-500 text-sm mt-0.5">{job.company}</p>
               </div>
-
-              {/* Period + badge */}
               <div className="text-right flex-shrink-0">
                 <p className="text-blue-400 text-xs font-medium">{job.period}</p>
                 {job.note && (
@@ -123,23 +123,13 @@ export default function AccomplishmentsPage() {
               key={edu.school}
               className="flex items-center gap-5 bg-white border border-blue-100 rounded-2xl px-6 py-5 hover:border-blue-200 hover:shadow-sm transition-all"
             >
-              {/* Logo */}
               <div className="relative w-14 h-14 flex-shrink-0 rounded-xl overflow-hidden border border-blue-100 bg-blue-50">
-                <NextImage
-                  src={edu.logo}
-                  alt={edu.school}
-                  fill
-                  className="object-contain p-1.5"
-                />
+                <NextImage src={edu.logo} alt={edu.school} fill className="object-contain p-1.5" />
               </div>
-
-              {/* Text */}
               <div className="flex-1 min-w-0">
                 <p className="text-blue-900 font-bold text-sm">{edu.degree}</p>
                 <p className="text-blue-500 text-sm mt-0.5">{edu.school}</p>
               </div>
-
-              {/* Period */}
               <p className="text-blue-400 text-xs font-medium flex-shrink-0">{edu.period}</p>
             </div>
           ))}
@@ -152,10 +142,7 @@ export default function AccomplishmentsPage() {
         <p className="text-blue-100 mb-6 text-sm">
           Altan Kaan; konuşma fırsatlarına, mentorluğa ve işyerinde engelli kapsayıcılığı konusunda diğer insanlarla bağlantı kurmaya açık.
         </p>
-        <Link
-          href="/contact"
-          className="bg-white text-blue-700 font-bold px-8 py-3 rounded-full hover:bg-blue-50 transition-all inline-block"
-        >
+        <Link href="/contact" className="bg-white text-blue-700 font-bold px-8 py-3 rounded-full hover:bg-blue-50 transition-all inline-block">
           İletişime Geç
         </Link>
       </div>
