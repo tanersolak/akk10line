@@ -1,22 +1,29 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
+ 
 export async function POST(req: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "Sunucu yapılandırma hatası." },
+        { status: 500 }
+      );
+    }
+ 
+    const resend = new Resend(apiKey);
     const { name, email, subject, message } = await req.json();
-
+ 
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: "Ad, e-posta ve mesaj alanları zorunludur." },
         { status: 400 }
       );
     }
-
+ 
     await resend.emails.send({
       from: "Website Contact <onboarding@resend.dev>", // change after verifying your domain
-      to: "taner2164@gmail.com",                      // ← put Altan Kaan's real email here
+      to: "YOUR_EMAIL@gmail.com",                      // ← put Altan Kaan's real email here
       subject: subject || `Web sitenizden yeni bir mesaj: ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
@@ -45,7 +52,7 @@ export async function POST(req: Request) {
         </div>
       `,
     });
-
+ 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Email send error:", error);
